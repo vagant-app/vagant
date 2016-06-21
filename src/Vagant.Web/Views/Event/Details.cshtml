@@ -1,0 +1,109 @@
+﻿@model Vagant.Web.Models.Event.EventDetailsViewModel
+
+@{
+    ViewBag.Title = "Event Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    @Styles.Render("~/bundles/css/StarRating")
+    @Styles.Render("~/bundles/css/Event")
+}
+
+@section BodyScripts {
+    @Scripts.Render("~/bundles/StarRating")
+    @Scripts.Render("~/bundles/DetailsEvent")
+    @Scripts.Render("~/bundles/Event")
+}
+
+<script type="text/javascript">
+    var vagantApp = window.vagantApp || {};
+    vagantApp.event = vagantApp.event || {};
+
+    vagantApp.event.rate = '@Model.Rate';
+    vagantApp.event.isRatingEditable = '@Model.IsRatingEditable.ToString().ToLower()';
+    vagantApp.event.updateRatingUrl = '@Url.Action("UpdateRating", "Event")';
+    vagantApp.event.eventId = '@Model.EventId'
+</script>
+
+<div class="page event-page">
+    <div class="event-body event-details-body">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 form-horizontal">
+                <div class="row">
+                    <div class="col-md-5">
+                        @if (Model.LogoId.HasValue)
+                        {
+                            <img class="logo-image" src="@Url.Action("Download", "FileData", new { id = Model.LogoId })" />
+                        }
+                        else
+                        {
+                            <img class="logo-image" src="@Url.Content("~/Content/Images/logo-default.jpg")" />
+                        }
+                    </div>
+                    <div class="col-md-7">
+                        <div class="title">
+                            @Html.DisplayFor(m => m.Title)
+                        </div>
+                        <div class="space"></div>
+                        <div class="brief-description">
+                            @Html.DisplayFor(m => m.BriefDescription)
+                        </div>
+                        <div class="space"></div>
+                        <div class="author">
+                            Author: <a href="@Url.Action("Details", "Profile", new { userId = Model.AuthorId })">@Html.DisplayFor(m => m.AuthorName)</a>
+                        </div>
+                        <div class="space"></div>
+                        <div class="start-time">
+                            Event Date: @Html.DisplayFor(m => m.StartTime)
+                        </div>
+                        <div class="space"></div>
+                        <div class="instruments">
+                            @Html.CheckBoxFor(m => m.EventInstruments.IsGuitarUsed, new { @disabled = "disabled" }) Guitar
+                            @Html.CheckBoxFor(m => m.EventInstruments.IsViolinUsed, new { @disabled = "disabled" }) Violin
+                            @Html.CheckBoxFor(m => m.EventInstruments.IsSaxophoneUsed, new { @disabled = "disabled" }) Saxophone
+                            @Html.CheckBoxFor(m => m.EventInstruments.IsVocalApplicable, new { @disabled = "disabled" }) Vocal
+                        </div>
+                        @if (Model.AudioId.HasValue)
+                        {
+                            <div class="space"></div>
+                            <div class="row">
+                                <audio controls>
+                                    <source src="@Url.Action("Download", "FileData", new { id = Model.AudioId })">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <hr/>
+                <div class="row full-description">
+                    @Html.DisplayFor(m => m.FullDescription)
+                </div>
+                <div class="space"></div>
+                <div class="row">
+                    @Html.HiddenFor(m => m.Location.Latitude, new { @id = "latitude" })
+                    @Html.HiddenFor(m => m.Location.Longitude, new { @id = "longitude" })
+                    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+                    <div style='overflow:hidden;height:440px;'>
+                        <div id='gmap_canvas' style='height:440px;'></div>
+                        <style>
+                            #gmap_canvas img {
+                                max-width: none !important;
+                                background: none !important;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="rating-container" data-bind="template: { name: 'starRatingTemplate', data: rating }">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("Event/_StarRating")
+

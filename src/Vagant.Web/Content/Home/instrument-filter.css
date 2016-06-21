@@ -1,0 +1,21 @@
+﻿.instrument-filter {
+    margin-top: 3px;
+}
+
+.instrument-filter .instrument-filter__button {
+    text-decoration: none;
+
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+
+    display: inline-block;
+}
+
+.instrument-filter .instrument-filter__button:hover {
+    border-bottom: 3px solid orange;
+}
+
+.instrument-filter .instrument-filter__button.instrument-filter__button--switched-on {
+    border-bottom: 3px solid orange;
+}

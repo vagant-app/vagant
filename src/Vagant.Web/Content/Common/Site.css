@@ -1,0 +1,101 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url('/Content/bg.png');
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Bootstrap override */
+
+.navbar {
+    background-color: #FFF;
+    border-bottom: 3px solid #D02013;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #000;
+}
+
+.navbar a {
+    color: black;
+}
+
+.event-body{
+    padding-top: 15px;
+}
+
+.space {
+    height: 10px;
+}
+
+.create-event-button{
+    margin-top: 7px;
+    margin-right: 5px;
+}
+
+.navbar-header .logo-image {
+    max-height: 50px;
+    padding: 3px;
+}
+
+.navbar-header .site-title {
+    padding-right:10px;
+    font-weight: bold;
+}
+
+.navbar-header .site-home-link:hover,
+.navbar-header .site-home-link:active {
+    text-decoration: none;
+}
+
+.event-details-body .logo-image {
+    width: 100%;
+    padding: 10px;
+}
+
+.event-details-body .title {
+    font-size: 26px;
+}
+
+.event-details-body .full-description{
+    text-align:center;
+}
+
+.page:not(.home-page) {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    color: black;
+    background-color: #FFF;
+}
+
+.bell-notify {
+    height: 35px;
+    margin-top: 6px;
+    margin-right: 6px;
+}
+
+footer {
+    border-top: 2px solid #ccc;
+    text-align: right;
+    font-weight: bold;
+}

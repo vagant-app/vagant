@@ -1,0 +1,36 @@
+﻿<script type="text/html" id="eventListItemTemplate">
+    <div class="event-list-item">
+        <div class="event-list-item__playing-indicator">
+            <span data-bind="visible: isBeingPlayed" class="glyphicon glyphicon-headphones event-list-item__playing-indicator--margined-right"></span>
+
+            <span class="glyphicon glyphicon-star"></span>
+            <span data-bind="text: rate"></span>
+        </div>
+
+        <img class="event-list-item__image" data-bind="attr: { 'src': logoUrl }" />
+
+        <div class="event-list-item__controls">
+            <!-- ko ifnot: isBeingPlayed -->
+            <a class="event-list-item__controls--play event-list-item__controls--button" href="#" 
+               data-bind="click: $parents[1].play, visible: isPlayerControlPaneVisible">
+                <span class="glyphicon glyphicon-play"></span>
+            </a>
+            <!-- /ko -->
+
+            <!-- ko if: isBeingPlayed -->
+            <a class="event-list-item__controls--pause event-list-item__controls--button" href="#"
+               data-bind="click: $parents[1].pause, visible: isPlayerControlPaneVisible">
+                <span class="glyphicon glyphicon-pause"></span>
+            </a>
+            <!-- /ko -->
+
+            <a class="event-list-item__controls--open event-list-item__controls--button" href="#" data-bind="click: open">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </a>
+        </div>
+
+        <div class="event-list-item__description">
+            <span data-bind="text: title"></span>
+        </div>
+    </div>
+</script>

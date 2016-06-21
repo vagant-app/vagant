@@ -1,0 +1,26 @@
+﻿.home-page {
+
+}
+
+.home-page .home-page__header {
+    margin-top: 20px;
+}
+
+.home-page .home-page__body {
+    padding-bottom: 10px;
+}
+
+.home-page .reset-filters-button {
+    padding: 10px;
+    text-align:center;
+    margin: 10px;
+    background-color: gray;
+    color: white;
+
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.home-page .reset-filters-button:hover {
+    opacity: 0.9;
+}

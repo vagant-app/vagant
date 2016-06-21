@@ -1,0 +1,36 @@
+﻿@model Vagant.Web.Models.Profile.EditProfileViewModel
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/css/Profile")
+}
+
+@section BodyScripts {
+    @Scripts.Render("~/bundles/Profile")
+}
+
+<div class="page profile-page">
+    <div class="profile-header">
+        <div class="profile-image-container">
+            <img class="profile-image" src="" alt="no image"/>
+        </div>
+        <div class="profile-main-information">
+            <!-- ko template: { name: 'contactInformation', data: contactInformation } -->
+            <!-- /ko -->
+            <!-- ko template: { name: 'achievements', data: achievements } -->
+            <!-- /ko -->
+        </div>
+    </div>
+    <div class="profile-body">
+        <!-- ko template: { name: 'profileHistory', data: profileHistory } -->
+        <!-- /ko -->
+    </div>
+</div>
+
+@Html.Partial("Profile/_ContactInfo")
+@Html.Partial("Profile/_Achievements")
+@Html.Partial("Profile/_ProfileHistory")

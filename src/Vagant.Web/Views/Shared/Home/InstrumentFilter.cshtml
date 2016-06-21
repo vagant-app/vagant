@@ -1,0 +1,20 @@
+﻿<script type="text/html" id="instrumentFilterTemplate">
+    <div class="instrument-filter">
+        <a class="instrument-filter__button" href="#"
+           data-bind="click: clickGuitar, css: { 'instrument-filter__button--switched-on': isGuitarUsed }">
+            <img src="@Url.Content("~/Content/Images/guitar-icon.png")" />
+        </a>
+        <a class="instrument-filter__button" href="#"
+           data-bind="click: clickViolin, css: { 'instrument-filter__button--switched-on': isViolinUsed }">
+            <img src="@Url.Content("~/Content/Images/violin-icon.png")" />
+        </a>
+        <a class="instrument-filter__button" href="#"
+           data-bind="click: clickSaxophone, css: { 'instrument-filter__button--switched-on': isSaxophoneUsed }">
+            <img src="@Url.Content("~/Content/Images/saxophone-icon.png")" />
+        </a>
+        <a class="instrument-filter__button" href="#"
+           data-bind="click: clickVocal, css: { 'instrument-filter__button--switched-on': isVocalUsed }">
+            <img src="@Url.Content("~/Content/Images/vocalist-icon.png")" />
+        </a>
+    </div>
+</script>

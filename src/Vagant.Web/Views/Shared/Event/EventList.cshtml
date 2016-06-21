@@ -1,0 +1,9 @@
+﻿<script type="text/html" id="eventListTemplate">
+    <div class="event-list">
+        <!-- ko foreach: items -->
+        <div data-bind="template: { name: 'eventListItemTemplate', data: $data }"></div>
+        <!-- /ko -->
+    </div>
+</script>
+
+@Html.Partial("Event/EventListItem")

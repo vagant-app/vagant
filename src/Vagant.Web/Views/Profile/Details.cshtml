@@ -1,0 +1,54 @@
+﻿@model Vagant.Web.Models.Profile.ProfileDetailsViewModel
+
+@{
+    ViewBag.Title = "Profile Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/css/Profile")
+}
+
+@section BodyScripts {
+    @Scripts.Render("~/bundles/Profile")
+}
+
+<div class="page profile-page">
+    <div class="profile-body">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="profile-image" src="@Url.Content("~/Content/Images/user-icon.png")" alt="no image" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DisplayFor(x => x.UserName)
+                        <div class="space"></div>
+						<div class="social-networks-list">
+                            <div class="social-network-link">
+                                <img class="image img-responsive" src="@Url.Content("~/Content/Images/facebook.png")"/>
+                            </div>
+                            <div class="social-network-link">
+                                <img class="image img-responsive" src="@Url.Content("~/Content/Images/vk-group.png")" />
+                            </div>
+                            <div class="social-network-link">
+                                <img class="image img-responsive" src="@Url.Content("~/Content/Images/instagram.png")" />
+                            </div>
+                        </div>
+                        @{ Html.RenderPartial("Profile/_ProfileHistory", Model.HistoryItems); }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

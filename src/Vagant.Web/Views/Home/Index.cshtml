@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section Styles {
+    @Styles.Render("~/bundles/css/Timeline")
+    @Styles.Render("~/bundles/css/Home")
+    
+}
+
+@section BodyScripts {
+    <script type="text/javascript">
+        var vagantAppParams = {};
+
+        vagantAppParams.getEventsDataUrl = '@Url.Action("GetEvents", "Event")';
+        vagantAppParams.gotoEventsDetailsUrl = '@Url.Action("Details", "Event")';
+    </script>
+
+    @Scripts.Render("~/bundles/Timeline")
+    @Scripts.Render("~/bundles/Home")
+}
+
+<div class="page home-page">
+    <div class="home-page__header clearfix">
+        <!-- ko template: { name: 'timelineTemplate', data: gridManager.timeline } -->
+        <!-- /ko -->
+    </div>
+    <div class="home-page__body clearfix">
+        <div class="col-xs-12 col-sm-12 col-md-9">
+            <div data-bind="template: { name: 'eventManagerTemplate', data: gridManager }"></div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3">
+            <div data-bind="template: { name: 'instrumentFilterTemplate', data: gridManager.instrumentFilter }">
+            </div>
+            <div>
+                <div data-bind="click: gridManager.resetFilters" class="reset-filters-button">
+                    <span class="glyphicon glyphicon-repeat"></span>
+                    <span>Start Over</span>
+                </div>
+            </div>
+            <div class="notifications">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("Home/_Timeline")
+@Html.Partial("Event/EventManager")
+@Html.Partial("Home/InstrumentFilter")

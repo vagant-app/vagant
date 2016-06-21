@@ -1,0 +1,9 @@
+﻿<script type="text/html" id="eventManagerTemplate">
+    <div class="event-manager">
+        <div class="event-manager__event-list">
+            <div data-bind="template: { name: 'eventListTemplate', data: eventList }"></div>
+        </div>
+    </div>
+</script>
+
+@Html.Partial("Event/EventList")
